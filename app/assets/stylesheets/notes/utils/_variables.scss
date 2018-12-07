@@ -1,0 +1,25 @@
+// Medias querys
+$breakpoints: (
+  'xs': "(min-width: 0px) and (max-width: 767px)",
+  'sm': "(min-width: 768px) and (max-width: 991px)",
+  'md': "(min-width: 992px) and (max-width: 1199px)",
+  'lg': "(min-width: 1200px) and (max-width: 1600px)",
+  'xl': "(min-width: 1601px) and (max-width: 2049px)",
+  'xll': "(min-width: 2050px) and (max-width: 2560px)"
+) !default;
+
+// Fonts size
+$base-font-size: 14px;
+
+// Fonts Weight
+$light: 300;
+$normal: 400;
+$semibold: 500;
+$bold: 700;
+
+//color
+$blue: 	#7289da;
+$white: #ffffff;
+$grey: #99aab5;
+$soft-black: 	#2c2f33;
+$killer-whale: #23272a;

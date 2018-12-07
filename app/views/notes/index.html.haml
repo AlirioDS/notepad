@@ -1,0 +1,62 @@
+-#
+  %p#notice= notice
+  %h1 Notes
+  %table
+    %thead
+      %tr
+        %th Title
+        %th Content
+        %th Color
+        %th{:colspan => "3"}
+    %tbody
+      - @notes.each do |note|
+        %tr
+          %td= note.title
+          %td= note.content
+          %td= note.color
+          %td= link_to 'Show', note
+          %td= link_to 'Edit', edit_note_path(note)
+          %td= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' }
+  %br/
+  = link_to 'New Note', new_note_path
+
+.container
+  .row
+    .col-sm-2.col-md-2.text-right
+      %button.btn.btn-cs{type: "button", 'data-toggle' => 'modal', 'data-target' => '#new_note'} Crear Nota
+      #new_note.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "new_note", :role => "dialog", :tabindex => "-1"}
+        .modal-dialog{:role => "document"}
+          .modal-content
+            .modal-header
+              %h5#exampleModalLabel.modal-title Nueva Nota
+              %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                %span{"aria-hidden" => "true"} ×
+            .modal-body
+              %form
+                .form-group
+                  %input#recipient-name.form-control{:type => "text", placeholder: 'Titulo:'}/
+                .form-group
+                  %label.col-form-label{:for => "message-text"} 
+                  %textarea#message-text.form-control{placeholder: 'Añade una Nota:'}
+            .modal-footer
+              %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+              %button.btn.btn-primary{:type => "button"} Save
+    .col-sm-8.col-md-8
+      .container.h-100
+        .d-flex.justify-content-center.h-100
+          .searchbar
+            %input.search_input{:name => "", :placeholder => "Buscar...", :type => "text"}/
+            %a.search_icon{:href => "#"}
+              %i.fas.fa-search
+    .col-sm-1.col-md-1.text-left
+      .dropdown
+        %button#dropdownMenu2.btn.btn-cs.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+          %i.fas.fa-globe-americas.fa-cs
+          %span.caret
+        .dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
+          %button.dropdown-item.text-center{:type => "button"} Español
+          %button.dropdown-item.text-center{:type => "button"} English
+
+.container
+  .row
+  
