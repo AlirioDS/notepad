@@ -32,6 +32,11 @@
                 %p.card-text
                   = note.content
                 .row
+                  .col-sm-12
+                    .text-right.date-modification
+                      Editado
+                      = note.updated_at.to_formatted_s(:short)
+                .row
                   .col-sm-6
                     .text-left
                       = link_to 'Eliminar', note, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-per'
