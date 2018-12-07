@@ -7,15 +7,13 @@ class NotesController < ApplicationController
     @notes = Note.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @note = Note.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @note = Note.new(note_params)

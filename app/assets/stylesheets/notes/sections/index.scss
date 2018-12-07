@@ -97,6 +97,14 @@
     margin: 15rem auto;
   }
 
+  .modal-header {
+    background-color: $grey-soft;
+  }
+
+  .modal-body {
+    background-color: $grey-soft;
+  }
+
   .modal-title {
     font-size: 3rem;
   }
@@ -108,7 +116,60 @@
   }
 
   .modal-footer {
+    background-color: $blue;
     .btn {
       font-size: 2rem;
     }
   }
+
+  .padding {
+    padding-top: 50px;
+  }
+
+  .row.border {
+    background-color: $grey-soft;
+    padding: 15px 0px;
+  }
+
+  .height-notes {
+    height: 500px;
+  }
+
+  .card-body {
+    h5 {
+      font-weight: bold;
+
+      @include respond-to(md) {
+        @include transition(all .3s ease);
+        font-size: 1.9rem;
+      }
+  
+      @include respond-to(sm) {
+        @include transition(all .3s ease);
+        font-size: 1.7rem;
+      }
+    }
+    p {
+      @include respond-to(md) {
+        @include transition(all .3s ease);
+        font-size: 1.7rem;
+      }
+  
+      @include respond-to(sm) {
+        @include transition(all .3s ease);
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+.btn-per {
+  @include respond-to(md) {
+    @include transition(all .3s ease);
+    font-size: 1.6rem;
+  }
+
+  @include respond-to(sm) {
+    @include transition(all .3s ease);
+    font-size: 1.1rem;
+  }
+}
