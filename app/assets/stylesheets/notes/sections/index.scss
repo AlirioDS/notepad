@@ -173,3 +173,8 @@
     font-size: 1.1rem;
   }
 }
+
+.padding-not-item {
+  @include transition(all .3s ease);
+  height: 500px;
+}

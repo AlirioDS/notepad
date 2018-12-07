@@ -22,7 +22,7 @@
 .container.padding
   .row.border
     .col-sm-12.col-md-12
-      .row
+      .row{class: "#{'padding-not-item' if @notes.empty?}"}
         - @notes.each do |note|
           .col-sm-4.col-md-3
             .card
