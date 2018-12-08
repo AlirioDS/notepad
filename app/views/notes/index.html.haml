@@ -1,15 +1,13 @@
 .container
   .row
     .col-sm-2.col-md-2.text-right
-      %button.btn.btn-cs{type: "button", 'data-toggle' => 'modal', 'data-target' => '#note'} Crear Nota
-      = render 'modal_form'
+      %button.btn.btn-cs{type: "button", 'data-toggle' => 'modal', 'data-target' => '#new_note'} Crear Nota
+      = render 'new_modal'
     .col-sm-8.col-md-8
-      .container.h-100
-        .d-flex.justify-content-center.h-100
-          .searchbar
-            %input.search_input{:name => "", :placeholder => "Buscar...", :type => "text"}/
-            %a.search_icon{:href => "#"}
-              %i.fas.fa-search
+      .container
+        = form_tag(root_path, method: 'get') do
+          = text_field_tag :search, nil, class: "search-box"
+          = submit_tag "Search", name: nil, class: "btn btn-search"
     .col-sm-1.col-md-1.text-left
       .dropdown
         %button#dropdownMenu2.btn.btn-cs.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
@@ -22,10 +20,10 @@
 .container.padding
   .row.border
     .col-sm-12.col-md-12
-      .row{class: "#{'padding-not-item' if @notes.empty?}"}
+      .row 
         - @notes.each do |note|
           .col-sm-4.col-md-3
-            .card
+            .card{style: "background-color: #{note.color};"}
               .card-body
                 %h5.card-title
                   = note.title
@@ -42,5 +40,9 @@
                       = link_to 'Eliminar', note, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-per'
                   .col-sm-6
                     .text-right
-                      %button.btn.btn-primary.btn-per{type: "button", 'data-toggle' => 'modal', 'data-target' => '#note'} Editar
-                      = render 'modal_form'
+                      %button.btn.btn-primary.btn-per{type: "button", 'data-toggle' => 'modal', 'data-target' => '#edit_note'} Editar
+                      /= render 'edit_modal'
+
+- if @note.errors.any?
+  :javascript
+    $('#new_note').modal('show')

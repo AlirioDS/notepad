@@ -6,9 +6,14 @@ class NotesController < ApplicationController
   def index
     @note = Note.new
     all_notes
+    if params[:search].present?
+      @notes = Note.search(params[:search])
+    end
   end
 
-  def edit; end
+  def edit
+    render :index
+  end
 
   def create
     @note = Note.new(note_params)
@@ -24,7 +29,7 @@ class NotesController < ApplicationController
     all_notes
     if @note.update(note_params)
       redirect_to @note, notice: 'Note was successfully updated.'
-      render :show
+      render :index
     else
       render :edit
     end

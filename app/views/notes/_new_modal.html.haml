@@ -1,0 +1,8 @@
+#new_note.modal{"aria-hidden" => "true", "aria-labelledby" => "new_note", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %h5#exampleModalLabel.modal-title Nueva Nota
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+      = render 'modal_form'

@@ -39,128 +39,74 @@
   }
 }
 
-.searchbar{
-  margin-bottom: auto;
-  margin-top: auto;
-  height: 40px;
-  background-color: $soft-black;
-  padding: 5px;
+.modal-dialog {
+  margin: 15rem auto;
+}
 
-    a:hover {
-      text-decoration: none;
-    }
-  }
+.modal-header {
+  background-color: $grey-soft;
+}
 
-  .search_input{
-  color: $white;
-  border: 0;
-  outline: 0;
-  background: none;
-  width: 0;
-  line-height: 30px;
+.modal-body {
+  background-color: $grey-soft;
+}
+
+.modal-title {
+  font-size: 3rem;
+}
+
+.form-control {
   font-size: 2rem;
-  }
+  height: 4rem;
+  padding: 1rem 1rem;
+}
 
-  .searchbar > .search_input{
-  padding: 0 10px;
-  width: 200px;
+.modal-footer {
+  background-color: $blue;
+  .btn {
+    font-size: 2rem;
+  }
+}
+
+.padding {
+  padding-top: 50px;
+}
+
+.row.border {
+  background-color: $grey-soft;
+  padding: 15px 0px;
+}
+
+.height-notes {
+  height: 500px;
+}
+
+.card-body {
+  h5 {
+    font-weight: bold;
+
     @include respond-to(md) {
       @include transition(all .3s ease);
-      width: 430px;
+      font-size: 1.9rem;
     }
 
     @include respond-to(sm) {
       @include transition(all .3s ease);
-      width: 280px;
-    }
-  
-  }
-
-  .searchbar:hover > .search_icon{
-  background: $white;
-  color: $killer-whale;
-  }
-
-  .search_icon{
-  height: 30px;
-  width: 30px;
-  float: right;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  color:$white;
-  font-size: 2rem;
-  }
-
-  .modal-dialog {
-    margin: 15rem auto;
-  }
-
-  .modal-header {
-    background-color: $grey-soft;
-  }
-
-  .modal-body {
-    background-color: $grey-soft;
-  }
-
-  .modal-title {
-    font-size: 3rem;
-  }
-
-  .form-control {
-    font-size: 2rem;
-    height: 4rem;
-    padding: 1rem 1rem;
-  }
-
-  .modal-footer {
-    background-color: $blue;
-    .btn {
-      font-size: 2rem;
+      font-size: 1.7rem;
     }
   }
-
-  .padding {
-    padding-top: 50px;
-  }
-
-  .row.border {
-    background-color: $grey-soft;
-    padding: 15px 0px;
-  }
-
-  .height-notes {
-    height: 500px;
-  }
-
-  .card-body {
-    h5 {
-      font-weight: bold;
-
-      @include respond-to(md) {
-        @include transition(all .3s ease);
-        font-size: 1.9rem;
-      }
-  
-      @include respond-to(sm) {
-        @include transition(all .3s ease);
-        font-size: 1.7rem;
-      }
+  p {
+    @include respond-to(md) {
+      @include transition(all .3s ease);
+      font-size: 1.7rem;
     }
-    p {
-      @include respond-to(md) {
-        @include transition(all .3s ease);
-        font-size: 1.7rem;
-      }
-  
-      @include respond-to(sm) {
-        @include transition(all .3s ease);
-        font-size: 1.2rem;
-      }
+
+    @include respond-to(sm) {
+      @include transition(all .3s ease);
+      font-size: 1.2rem;
     }
   }
+}
 
 .btn-per {
   @include respond-to(md) {

@@ -2,5 +2,6 @@
 
 Rails.application.routes.draw do
   resources :notes
+  resources :search, only: [:index]
   root 'notes#index'
 end
