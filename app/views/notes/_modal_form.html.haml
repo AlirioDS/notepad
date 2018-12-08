@@ -1,17 +1,19 @@
-#new_note.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "new_note", :role => "dialog", :tabindex => "-1"}
+#note.modal{"aria-hidden" => "true", "aria-labelledby" => "note", :role => "dialog", :tabindex => "-1"}
   .modal-dialog{:role => "document"}
     .modal-content
       .modal-header
         %h5#exampleModalLabel.modal-title Nueva Nota
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} ×
-      = simple_form_for note do |f|
+      = simple_form_for @note do |f|
         .modal-body
-          %form
-            .form-group
-              = f.input :title, label: false, input_html: {class: 'form-control', placeholder: 'Titulo', maxlength: 30}
-            .form-group
-              = f.input :content, as: :text, label: false, input_html: {class: 'form-control', placeholder: 'Añade una Nota'}
+          .form-group
+            = f.input :title, label: false, input_html: { class: 'form-control', placeholder: 'Titulo', maxlength: 30, required: "required" }
+          .form-group
+            = f.input :content, as: :text, label: false, input_html: { class: 'form-control', placeholder: 'Añade una Nota ...', required: "required" }
         .modal-footer
           %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
           = f.button :submit, 'Crear', class: 'btn btn-primary'
+- if @note.errors.any?
+  :javascript
+    $('#new_note').modal('show')

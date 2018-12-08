@@ -1,8 +1,8 @@
 .container
   .row
     .col-sm-2.col-md-2.text-right
-      %button.btn.btn-cs{type: "button", 'data-toggle' => 'modal', 'data-target' => '#new_note'} Crear Nota
-      /= render 'modal_form', note: @note
+      %button.btn.btn-cs{type: "button", 'data-toggle' => 'modal', 'data-target' => '#note'} Crear Nota
+      = render 'modal_form'
     .col-sm-8.col-md-8
       .container.h-100
         .d-flex.justify-content-center.h-100
@@ -42,5 +42,5 @@
                       = link_to 'Eliminar', note, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-per'
                   .col-sm-6
                     .text-right
-                      .btn.btn-primary.btn-per
-                        Edit
+                      %button.btn.btn-primary.btn-per{type: "button", 'data-toggle' => 'modal', 'data-target' => '#note'} Editar
+                      = render 'modal_form'
