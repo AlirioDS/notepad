@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class NotesController < ApplicationController
-  before_action :set_note, only: [:edit, :update, :destroy]
+  before_action :set_note, only: %i[edit update destroy]
   before_action :all_notes
   before_action :set_locale
 
@@ -17,14 +17,13 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(note_params)
-
     respond_to do |format|
       if @note.save
-        format.html { redirect_to notes_path, notice: 'Note was successfully created.'}
-        format.json { render json: :index, status: :created, location: @note}
+        format.html { redirect_to notes_path, notice: 'Note was successfully created.' }
+        format.json { render json: :index, status: :created, location: @note }
       else
-        format.html { render action: "index"}
-        format.js { render 'new_modal_error'}
+        format.html { render action: 'index' }
+        format.js { render 'new_modal_error' }
       end
     end
   end
@@ -33,10 +32,10 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to notes_path, notice: 'Note was successfully updated.' }
-        format.json { render json: :index, status: :created, location: @note}
+        format.json { render json: :index, status: :created, location: @note }
       else
-        format.html { render action: "index"}
-        format.js { render 'new_modal_error'}
+        format.html { render action: 'index' }
+        format.js { render 'new_modal_error' }
       end
     end
   end
@@ -71,7 +70,7 @@ class NotesController < ApplicationController
     end
   end
 
-  def default_url_options(options = {})
-    {locale: I18n.locale}
+  def default_url_options(_options = {})
+    { locale: I18n.locale }
   end
 end
