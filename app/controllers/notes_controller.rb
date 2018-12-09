@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class NotesController < ApplicationController
-  before_action :set_note, only: [ :edit, :update, :destroy ]
+  before_action :set_note, only: [:edit, :update, :destroy]
   before_action :all_notes
 
   def index
@@ -19,11 +19,11 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to notes_path, notice: 'Note was successfully created.' }
-        format.json { render :index, status: :created, location: @note }
+        format.html { redirect_to notes_path, notice: 'Note was successfully created.'}
+        format.json { render json: :index, status: :created, location: @note}
       else
-        format.html { render :index }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+        format.html { render action: "index"}
+        format.js { render 'new_modal_error'}
       end
     end
   end
@@ -32,10 +32,10 @@ class NotesController < ApplicationController
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to notes_path, notice: 'Note was successfully updated.' }
-        format.json { render :index }
+        format.json { render json: :index, status: :created, location: @note}
       else
-        format.html { render :index }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+        format.html { render action: "index"}
+        format.js { render 'new_modal_error'}
       end
     end
   end
@@ -48,7 +48,7 @@ class NotesController < ApplicationController
   private
 
   def all_notes
-    @notes = Note.all
+    @notes = Note.all.reverse_order
   end
 
   def set_note

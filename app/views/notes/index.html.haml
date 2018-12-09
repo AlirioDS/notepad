@@ -1,5 +1,5 @@
 #index
-  #note.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "note", :role => "dialog"}
+  #note.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "note-label", :role => "dialog", tabindex: "-1"}
     .modal-dialog{:role => "document"}
       .modal-content
 
@@ -45,6 +45,3 @@
                     .col-sm-6
                       .text-right
                         = link_to 'Editar', edit_note_path(note[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn btn-outline-primary'
--#- if @note.errors.any?
-  :javascript
-    $('#note').modal('show')
