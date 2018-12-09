@@ -2,84 +2,84 @@
 .header-padding {
   padding: 15px 0px;
 }
-  ///Modal
-  .green {
-    background-color: $green !important;
+///Modal
+.green {
+  background-color: $green !important;
+}
+.modal-header {
+  background-color: $blue;
+  h5 {
+    color: $white;
   }
-  .modal-header {
-    background-color: $blue;
-    h5 {
-      color: $white;
-    }
-  }
-  .modal-dialog {
-    margin: 15rem auto;
-  }
+}
+.modal-dialog {
+  margin: 15rem auto;
+}
+.form-control {
+  padding: 1rem 1rem;
+}
+
+///Search
+.search {
   .form-control {
-    padding: 1rem 1rem;
+    display: inline-block;
+    width: 70%;
   }
+}
 
-  ///Search
-  .search {
-    .form-control {
-      display: inline-block;
-      width: 70%;
-    }
-  }
-
-  ///lenguage
-  .dropdown-menu {
-    .dropdown-item {
-      padding: 0.2rem 1rem;
-      a {
+///lenguage
+.dropdown-menu {
+  .dropdown-item {
+    padding: 0.2rem 1rem;
+    a {
+      text-decoration: none;
+      &:hover {
         text-decoration: none;
-        &:hover {
-          text-decoration: none;
-        }
       }
     }
   }
+}
 
 //main
-  .padding {
-    padding-top: 50px;
-  }
+.padding {
+  padding-top: 50px;
+}
 
-  .height-notes {
-    height: 500px;
-  }
-  ///Card
-  .border-secondary {
-    border-color: 1rem !important;
-  }
+.height-notes {
+  height: 500px;
+}
+///Card
+.border-secondary {
+  border-color: 1rem !important;
+}
 
-  .card-header {
-    padding: 0.75rem 1.25rem;
-    margin-bottom: 0;
-    background-color: rgba(0,0,0,0.03);
-    border-bottom: 1px solid rgba(0,0,0,0.125);
-  }
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,0.03);
+  border-bottom: 1px solid rgba(0,0,0,0.125);
+}
 
-  .btn_delete {
-    color: $killer-whale !important;
-    .far.fa-trash-alt {
-      font-size: 1.2rem;
-    }
+.btn_delete {
+  color: $killer-whale !important;
+  .far.fa-trash-alt {
+    font-size: 1.2rem;
   }
+}
 
-  .btn_edit {
-    color: $killer-whale !important;
-    .far.fa-trash-alt {
-      font-size: 1.2rem;
-    } 
-  }
+.btn_edit {
+  color: $killer-whale !important;
+  .far.fa-trash-alt {
+    font-size: 1.2rem;
+  } 
+}
 
-  .card-body {
-    padding: 1.25rem;
-  }
+.card-body {
+  padding: 1.25rem;
+}
 
-  .date {
-    padding: 0.4rem;
-    font-size: 0.9rem;
-    font-style: italic; 
-  }
+.date {
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  font-style: italic; 
+}
