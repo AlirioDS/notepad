@@ -1,48 +1,50 @@
-.container
-  .row
-    .col-sm-2.col-md-2.text-right
-      %button.btn.btn-cs{type: "button", 'data-toggle' => 'modal', 'data-target' => '#new_note'} Crear Nota
-      = render 'new_modal'
-    .col-sm-8.col-md-8
-      .container
-        = form_tag(root_path, method: 'get') do
-          = text_field_tag :search, nil, class: "search-box"
-          = submit_tag "Search", name: nil, class: "btn btn-search"
-    .col-sm-1.col-md-1.text-left
-      .dropdown
-        %button#dropdownMenu2.btn.btn-cs.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-          %i.fas.fa-globe-americas.fa-cs
-          %span.caret
-        .dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
-          %button.dropdown-item.text-center{:type => "button"} Español
-          %button.dropdown-item.text-center{:type => "button"} English
+#index
+  #note.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "note", :role => "dialog"}
+    .modal-dialog{:role => "document"}
+      .modal-content
 
-.container.padding
-  .row.border
-    .col-sm-12.col-md-12
-      .row 
-        - @notes.each do |note|
-          .col-sm-4.col-md-3
-            .card{style: "background-color: #{note.color};"}
-              .card-body
-                %h5.card-title
-                  = note.title
-                %p.card-text
-                  = note.content
-                .row
-                  .col-sm-12
-                    .text-right.date-modification
-                      Editado
-                      = note.updated_at.to_formatted_s(:short)
-                .row
-                  .col-sm-6
-                    .text-left
-                      = link_to 'Eliminar', note, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-per'
-                  .col-sm-6
-                    .text-right
-                      %button.btn.btn-primary.btn-per{type: "button", 'data-toggle' => 'modal', 'data-target' => '#edit_note'} Editar
-                      /= render 'edit_modal'
+  .container
+    .row
+      .col-sm-2.col-md-2.text-right
+        = link_to 'Crear', root_path, remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn btn-outline-success'
+      .col-sm-8.col-md-8
+        .container
+          = form_tag(root_path, method: 'get') do
+            = text_field_tag :search, nil, class: "search-box"
+            = submit_tag "Search", name: nil, class: "btn btn-search"
+      .col-sm-1.col-md-1.text-left
+        .dropdown
+          %button#dropdownMenu2.btn.btn-cs.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+            %i.fas.fa-globe-americas.fa-cs
+            %span.caret
+          .dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
+            %button.dropdown-item.text-center{:type => "button"} Español
+            %button.dropdown-item.text-center{:type => "button"} English
 
-- if @note.errors.any?
+  .container.padding
+    .row.border
+      .col-sm-12.col-md-12
+        .row 
+          - @notes.each do |note|
+            .col-sm-4.col-md-3
+              .card{style: "background-color: #{note.color};"}
+                .card-body
+                  %h5.card-title
+                    = note.title
+                  %p.card-text
+                    = note.content
+                  .row
+                    .col-sm-12
+                      .text-right.date-modification
+                        Editado
+                        = note.updated_at.to_formatted_s(:short)
+                  .row
+                    .col-sm-6
+                      .text-left
+                        = link_to 'Eliminar', note, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-per'
+                    .col-sm-6
+                      .text-right
+                        = link_to 'Editar', edit_note_path(note[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn btn-outline-primary'
+-#- if @note.errors.any?
   :javascript
-    $('#new_note').modal('show')
+    $('#note').modal('show')

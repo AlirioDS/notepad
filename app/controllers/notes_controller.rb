@@ -1,37 +1,42 @@
 # frozen_string_literal: true
 
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_note, only: [ :edit, :update, :destroy ]
+  before_action :all_notes
 
   def index
     @note = Note.new
-    all_notes
+
     if params[:search].present?
       @notes = Note.search(params[:search])
     end
   end
 
-  def edit
-    render :index
-  end
+  def edit; end
 
   def create
     @note = Note.new(note_params)
-    all_notes
-    if @note.save
-      redirect_to notes_path, notice: 'Note was successfully created.'
-    else
-      render :index
+
+    respond_to do |format|
+      if @note.save
+        format.html { redirect_to notes_path, notice: 'Note was successfully created.' }
+        format.json { render :index, status: :created, location: @note }
+      else
+        format.html { render :index }
+        format.json { render json: @note.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def update
-    all_notes
-    if @note.update(note_params)
-      redirect_to @note, notice: 'Note was successfully updated.'
-      render :index
-    else
-      render :edit
+    respond_to do |format|
+      if @note.update(note_params)
+        format.html { redirect_to notes_path, notice: 'Note was successfully updated.' }
+        format.json { render :index }
+      else
+        format.html { render :index }
+        format.json { render json: @note.errors, status: :unprocessable_entity }
+      end
     end
   end
 
