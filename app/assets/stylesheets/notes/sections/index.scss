@@ -1,114 +1,85 @@
-.btn-cs {
-  background-color: $soft-black;
-  border-color: $soft-black;
-  color: $white;
-  font-size: 2rem;
-  height: 40px;
-  
-  &:hover {
-    background-color: $grey;
-    border-color: $grey;
+//Header
+.header-padding {
+  padding: 15px 0px;
+}
+///Modal
+.green {
+  background-color: $green !important;
+}
+.modal-header {
+  background-color: $blue;
+  h5 {
     color: $white;
   }
 }
-
-.btn-cs.dropdown-toggle {
-  background-color: $grey;
+.modal-dialog {
+  margin: 15rem auto;
+}
+.form-control {
+  padding: 1rem 1rem;
 }
 
-.fa-cs {
-  color: $white;
-  font-size: 2.4rem;
-  padding: 0px;
-}
-
-.dropdown-toggle::after {
-  color: w$white;
-}
-
-.dropdown-item:hover, .dropdown-item:focus {
-  background-color: $grey;
-}
-
-.dropdown-menu {
-  left: 35px;
-  min-width: 85px;
-
-  .dropdown-item.text-center {
-    font-size: 1.6rem;
-  }
-}
-
-.searchbar{
-  margin-bottom: auto;
-  margin-top: auto;
-  height: 40px;
-  background-color: $soft-black;
-  padding: 5px;
-
-    a:hover {
-      text-decoration: none;
-    }
-  }
-
-  .search_input{
-  color: $white;
-  border: 0;
-  outline: 0;
-  background: none;
-  width: 0;
-  line-height: 30px;
-  font-size: 2rem;
-  }
-
-  .searchbar > .search_input{
-  padding: 0 10px;
-  width: 200px;
-    @include respond-to(md) {
-      @include transition(all .3s ease);
-      width: 430px;
-    }
-
-    @include respond-to(sm) {
-      @include transition(all .3s ease);
-      width: 280px;
-    }
-  
-  }
-
-  .searchbar:hover > .search_icon{
-  background: $white;
-  color: $killer-whale;
-  }
-
-  .search_icon{
-  height: 30px;
-  width: 30px;
-  float: right;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  color:$white;
-  font-size: 2rem;
-  }
-
-  .modal-dialog {
-    margin: 15rem auto;
-  }
-
-  .modal-title {
-    font-size: 3rem;
-  }
-
+///Search
+.search {
   .form-control {
-    font-size: 2rem;
-    height: 4rem;
-    padding: 1rem 1rem;
+    display: inline-block;
+    width: 70%;
   }
+}
 
-  .modal-footer {
-    .btn {
-      font-size: 2rem;
+///lenguage
+.dropdown-menu {
+  .dropdown-item {
+    padding: 0.2rem 1rem;
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
+}
+
+//main
+.padding {
+  padding-top: 50px;
+}
+
+.height-notes {
+  height: 500px;
+}
+///Card
+.border-secondary {
+  border-color: 1rem !important;
+}
+
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,0.03);
+  border-bottom: 1px solid rgba(0,0,0,0.125);
+}
+
+.btn_delete {
+  color: $killer-whale !important;
+  .far.fa-trash-alt {
+    font-size: 1.2rem;
+  }
+}
+
+.btn_edit {
+  color: $killer-whale !important;
+  .far.fa-trash-alt {
+    font-size: 1.2rem;
+  } 
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.date {
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  font-style: italic; 
+}

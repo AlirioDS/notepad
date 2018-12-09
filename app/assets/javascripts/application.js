@@ -16,4 +16,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require jquery.minicolors
+//= require jquery.minicolors.simple_form
 //= require_tree .

@@ -1,62 +1,53 @@
--#
-  %p#notice= notice
-  %h1 Notes
-  %table
-    %thead
-      %tr
-        %th Title
-        %th Content
-        %th Color
-        %th{:colspan => "3"}
-    %tbody
-      - @notes.each do |note|
-        %tr
-          %td= note.title
-          %td= note.content
-          %td= note.color
-          %td= link_to 'Show', note
-          %td= link_to 'Edit', edit_note_path(note)
-          %td= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' }
-  %br/
-  = link_to 'New Note', new_note_path
+#index
+  #note.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "note-label", :role => "dialog", tabindex: "-1"}
+    .modal-dialog{:role => "document"}
+      .modal-content
 
-.container
-  .row
-    .col-sm-2.col-md-2.text-right
-      %button.btn.btn-cs{type: "button", 'data-toggle' => 'modal', 'data-target' => '#new_note'} Crear Nota
-      #new_note.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "new_note", :role => "dialog", :tabindex => "-1"}
-        .modal-dialog{:role => "document"}
-          .modal-content
-            .modal-header
-              %h5#exampleModalLabel.modal-title Nueva Nota
-              %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-                %span{"aria-hidden" => "true"} ×
-            .modal-body
-              %form
-                .form-group
-                  %input#recipient-name.form-control{:type => "text", placeholder: 'Titulo:'}/
-                .form-group
-                  %label.col-form-label{:for => "message-text"} 
-                  %textarea#message-text.form-control{placeholder: 'Añade una Nota:'}
-            .modal-footer
-              %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
-              %button.btn.btn-primary{:type => "button"} Save
-    .col-sm-8.col-md-8
-      .container.h-100
-        .d-flex.justify-content-center.h-100
-          .searchbar
-            %input.search_input{:name => "", :placeholder => "Buscar...", :type => "text"}/
-            %a.search_icon{:href => "#"}
-              %i.fas.fa-search
-    .col-sm-1.col-md-1.text-left
-      .dropdown
-        %button#dropdownMenu2.btn.btn-cs.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-          %i.fas.fa-globe-americas.fa-cs
-          %span.caret
-        .dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
-          %button.dropdown-item.text-center{:type => "button"} Español
-          %button.dropdown-item.text-center{:type => "button"} English
+  .container
+    .row
+      .col-sm-3.col-md-3.text-center.header-padding
+        = link_to t('views.btn_create'), root_path, remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn btn-outline-success'
+      .col-sm-7.col-md-7.text-center.header-padding
+        .container 
+          .search
+            = form_tag(root_path, method: 'get') do
+              = text_field_tag :search, nil, class: "form-control"
+              = submit_tag t('views.btn_search'), name: nil, class: "btn btn-outline-info"
+      .col-sm-2.col-md-2.text-center.header-padding
+        .dropdown
+          %button#dropdownMenu2.btn.btn-outline-dark.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+            %i.fas.fa-globe-americas
+            %span.caret
+          .dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
+            .dropdown-item
+              = link_to_unless_current t('views.english'), locale: "en"
+            .dropdown-item
+              = link_to_unless_current t('views.spanish'), locale: "es"
 
-.container
-  .row
-  
+  .container.padding
+    .row
+      .col-sm-12.col-md-12
+        .row 
+          - @notes.each do |note|
+            .col-sm-4.col-md-4.mb-3
+              .card.border-secondary.mb3{style: "background-color: #{note.color};"}
+                .card-header
+                  .row
+                    .col-sm-8
+                      = note.title
+                    .col-sm-2
+                      .text-right
+                        = link_to(note, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}"}, class: 'btn_delete') do
+                          .far.fa-trash-alt
+                    .col-sm-2
+                      .text-right
+                        = link_to(edit_note_path(note[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn_edit') do
+                          .fas.fa-edit
+                .card-body.text-secondary
+                  %p.card-text
+                    = note.content
+                .row
+                  .col-sm-12
+                    .text-right.date
+                      = t('views.date')
+                      = note.updated_at.to_formatted_s(:short)

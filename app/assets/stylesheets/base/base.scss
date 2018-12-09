@@ -2,44 +2,15 @@ main {
   padding: 20px 50px 0;
 }
 
-html {
-  @include respond-to(xl) {
-    @include transition(all .3s ease);
-    font-size: $base-font-size;
-  }
-
-  @include respond-to(lg) {
-    @include transition(all .3s ease);
-    font-size: 12px;
-  }
-
-  @include respond-to(md) {
-    @include transition(all .3s ease);
-    font-size: 9px;
-  }
-
-  @include respond-to(sm) {
-    @include transition(all .3s ease);
-    font-size: 11px;
-  }
-
-  @include respond-to(xs) {
-    @include transition(all .3s ease);
-    font-size: 10px;
-  }
-}
-
 body {
   height: 100%;
-  background-color: $blue;
+  background-color: $white;
 }
 
 .boxed {
 	display: block;
 	position: relative;
-	margin-top: 5%;
-	margin-right: 8%;
-	margin-left: 8%;;
+	margin: 3%;
 }
 
 main {
