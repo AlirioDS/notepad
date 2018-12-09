@@ -219,6 +219,8 @@ es:
     pm: pm
   views:
     btn_create: 'Crear Nota'
+    btn_edit: 'Editar'
+    btn_search: 'Buscar'
     modal:
       title:
         create: 'Crear Nota'
@@ -227,7 +229,6 @@ es:
         title: 'Titulo'
         content: 'Escriba aqui ...'
         color: 'Color'
-    btn_search: 'Buscar'
     english: 'Ingles'
     spanish: 'Español'
     destroy:
