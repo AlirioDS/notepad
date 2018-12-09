@@ -5,43 +5,49 @@
 
   .container
     .row
-      .col-sm-2.col-md-2.text-right
+      .col-sm-3.col-md-3.text-center.header-padding
         = link_to t('views.btn_create'), root_path, remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn btn-outline-success'
-      .col-sm-8.col-md-8
-        .container
-          = form_tag(root_path, method: 'get') do
-            = text_field_tag :search, nil, class: "search-box"
-            = submit_tag t('views.btn_search'), name: nil, class: "btn btn-search"
-      .col-sm-1.col-md-1.text-left
+      .col-sm-7.col-md-7.text-center.header-padding
+        .container 
+          .search
+            = form_tag(root_path, method: 'get') do
+              = text_field_tag :search, nil, class: "form-control"
+              = submit_tag t('views.btn_search'), name: nil, class: "btn btn-outline-info"
+      .col-sm-2.col-md-2.text-center.header-padding
         .dropdown
-          %button#dropdownMenu2.btn.btn-cs.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-            %i.fas.fa-globe-americas.fa-cs
+          %button#dropdownMenu2.btn.btn-outline-dark.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+            %i.fas.fa-globe-americas
             %span.caret
           .dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
-            = link_to_unless_current t('views.english'), locale: "en"
-            = link_to_unless_current t('views.spanish'), locale: "es"
+            .dropdown-item
+              = link_to_unless_current t('views.english'), locale: "en"
+            .dropdown-item
+              = link_to_unless_current t('views.spanish'), locale: "es"
 
   .container.padding
-    .row.border
+    .row
       .col-sm-12.col-md-12
         .row 
           - @notes.each do |note|
-            .col-sm-4.col-md-3
-              .card{style: "background-color: #{note.color};"}
-                .card-body
-                  %h5.card-title
-                    = note.title
+            .col-sm-4.col-md-4.mb-3
+              .card.border-secondary.mb3{style: "background-color: #{note.color};"}
+                .card-header
+                  .row
+                    .col-sm-8
+                      = note.title
+                    .col-sm-2
+                      .text-right
+                        = link_to(note, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}"}, class: 'btn_delete') do
+                          .far.fa-trash-alt
+                    .col-sm-2
+                      .text-right
+                        = link_to(edit_note_path(note[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn_edit') do
+                          .fas.fa-edit
+                .card-body.text-secondary
                   %p.card-text
                     = note.content
-                  .row
-                    .col-sm-12
-                      .text-right.date-modification
-                        Editado
-                        = note.updated_at.to_formatted_s(:short)
-                  .row
-                    .col-sm-6
-                      .text-left
-                        = link_to t('views.destroy.btn'), note, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}" }, class: 'btn btn-danger btn-per'
-                    .col-sm-6
-                      .text-right
-                        = link_to t('views.btn_edit'), edit_note_path(note[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn btn-outline-primary'
+                .row
+                  .col-sm-12
+                    .text-right.date
+                      = t('views.date')
+                      = note.updated_at.to_formatted_s(:short)

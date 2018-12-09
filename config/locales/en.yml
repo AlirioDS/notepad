@@ -227,6 +227,5 @@ en:
     english: 'English'
     spanish: 'Spanish'
     destroy:
-      btn: 'Delete'
       confirm: 'Are You Sure?'
-    btn_edit: 'Edit'
+    date: 'Updated'

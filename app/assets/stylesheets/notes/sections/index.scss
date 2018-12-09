@@ -1,132 +1,85 @@
-.btn-cs {
-  background-color: $soft-black;
-  border-color: $soft-black;
-  color: $white;
-  font-size: 2rem;
-  height: 40px;
-  
-  &:hover {
-    background-color: $grey;
-    border-color: $grey;
-    color: $white;
-  }
-}
-
-.btn-cs.dropdown-toggle {
-  background-color: $grey;
-}
-
-.fa-cs {
-  color: $white;
-  font-size: 2.4rem;
-  padding: 0px;
-}
-
-.dropdown-toggle::after {
-  color: w$white;
-}
-
-.dropdown-item:hover, .dropdown-item:focus {
-  background-color: $grey;
-}
-
-.dropdown-menu {
-  left: 35px;
-  min-width: 85px;
-
-  .dropdown-item.text-center {
-    font-size: 1.6rem;
-  }
-}
-
-.modal-dialog {
-  margin: 15rem auto;
-}
-
-.modal-header {
-  background-color: $grey-soft;
-}
-
-.modal-body {
-  background-color: $grey-soft;
-}
-
-.modal-title {
-  font-size: 3rem;
-}
-
-.form-control {
-  font-size: 2rem;
-  height: 4rem;
-  padding: 1rem 1rem;
-}
-
-.modal-footer {
-  background-color: $blue;
-  .btn {
-    font-size: 2rem;
-  }
-}
-
-.padding {
-  padding-top: 50px;
-}
-
-.row.border {
-  background-color: $grey-soft;
+//Header
+.header-padding {
   padding: 15px 0px;
 }
-
-.height-notes {
-  height: 500px;
-}
-
-.card-body {
-  h5 {
-    font-weight: bold;
-
-    @include respond-to(md) {
-      @include transition(all .3s ease);
-      font-size: 1.9rem;
-    }
-
-    @include respond-to(sm) {
-      @include transition(all .3s ease);
-      font-size: 1.7rem;
+  ///Modal
+  .green {
+    background-color: $green !important;
+  }
+  .modal-header {
+    background-color: $blue;
+    h5 {
+      color: $white;
     }
   }
-  p {
-    @include respond-to(md) {
-      @include transition(all .3s ease);
-      font-size: 1.7rem;
-    }
+  .modal-dialog {
+    margin: 15rem auto;
+  }
+  .form-control {
+    padding: 1rem 1rem;
+  }
 
-    @include respond-to(sm) {
-      @include transition(all .3s ease);
+  ///Search
+  .search {
+    .form-control {
+      display: inline-block;
+      width: 70%;
+    }
+  }
+
+  ///lenguage
+  .dropdown-menu {
+    .dropdown-item {
+      padding: 0.2rem 1rem;
+      a {
+        text-decoration: none;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+//main
+  .padding {
+    padding-top: 50px;
+  }
+
+  .height-notes {
+    height: 500px;
+  }
+  ///Card
+  .border-secondary {
+    border-color: 1rem !important;
+  }
+
+  .card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,0.03);
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+  }
+
+  .btn_delete {
+    color: $killer-whale !important;
+    .far.fa-trash-alt {
       font-size: 1.2rem;
     }
   }
-}
 
-.btn-per {
-  @include respond-to(md) {
-    @include transition(all .3s ease);
-    font-size: 1.6rem;
+  .btn_edit {
+    color: $killer-whale !important;
+    .far.fa-trash-alt {
+      font-size: 1.2rem;
+    } 
   }
 
-  @include respond-to(sm) {
-    @include transition(all .3s ease);
-    font-size: 1.1rem;
+  .card-body {
+    padding: 1.25rem;
   }
-}
 
-.padding-not-item {
-  @include transition(all .3s ease);
-  height: 500px;
-}
-
-.date-modification {
-  padding: 15px 0px;
-  font-size: 1.3rem;
-  font-style: italic;
-}
+  .date {
+    padding: 0.4rem;
+    font-size: 0.9rem;
+    font-style: italic; 
+  }

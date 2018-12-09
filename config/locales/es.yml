@@ -231,6 +231,5 @@ es:
     english: 'Ingles'
     spanish: 'Español'
     destroy:
-      btn: 'Borrar'
       confirm: 'Estas Seguro?'
-    btn_edit: 'Editar'
+    date: 'Actualizado'

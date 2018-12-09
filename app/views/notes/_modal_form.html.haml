@@ -1,10 +1,7 @@
 #form_note
-  .modal-header
+  .modal-header{class: "#{@note.new_record? ? "green" : ""}"}
     %h5.modal-title
-      - if @note.new_record?
-        = t("views.modal.create")  
-      - else
-        = t("views.modal.edit")
+      = @note.new_record? ? t("views.btn_create") : t("views.btn_edit")
     %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
       %span{"aria-hidden" => "true"} ×
   = simple_form_for(@note, remote: true, 'data-type' => :script) do |f|
@@ -13,11 +10,10 @@
         = f.input :title, label: false, input_html: { class: 'form-control', placeholder: "#{t("views.modal.form.title")}", maxlength: 30, required: "required" }
       .form-group
         = f.input :content, as: :text, label: false, input_html: { class: 'form-control', placeholder: "#{t("views.modal.form.content")}", required: "required" }
-      .form-group
+      .form-group.text-right
         = f.input :color, as: :minicolors, label: false, input_html: {  class: 'form-control color-picker', placeholder: "#{t("views.modal.form.color")}" }
-      .form-group
-        = f.button :submit, "#{@note.new_record? ?  "#{t("views.btn_create")}" : "#{t("views.btn_edit")}"}", class: 'btn btn-primary'
     .modal-footer
+      = f.button :submit, "#{@note.new_record? ? "#{t("views.btn_create")}" : "#{t("views.btn_edit")}"}", class: "btn btn-outline-#{@note.new_record? ? "success" : "primary"}"
 
 :javascript
   jQuery( function($) {
