@@ -6,20 +6,20 @@
   .container
     .row
       .col-sm-2.col-md-2.text-right
-        = link_to 'Crear', root_path, remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn btn-outline-success'
+        = link_to t('views.btn_create'), root_path, remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn btn-outline-success'
       .col-sm-8.col-md-8
         .container
           = form_tag(root_path, method: 'get') do
             = text_field_tag :search, nil, class: "search-box"
-            = submit_tag "Search", name: nil, class: "btn btn-search"
+            = submit_tag t('views.btn_search'), name: nil, class: "btn btn-search"
       .col-sm-1.col-md-1.text-left
         .dropdown
           %button#dropdownMenu2.btn.btn-cs.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
             %i.fas.fa-globe-americas.fa-cs
             %span.caret
           .dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
-            %button.dropdown-item.text-center{:type => "button"} Español
-            %button.dropdown-item.text-center{:type => "button"} English
+            = link_to_unless_current t('views.english'), locale: "en"
+            = link_to_unless_current t('views.spanish'), locale: "es"
 
   .container.padding
     .row.border
@@ -41,7 +41,7 @@
                   .row
                     .col-sm-6
                       .text-left
-                        = link_to 'Eliminar', note, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-per'
+                        = link_to t('views.destroy.btn'), note, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}" }, class: 'btn btn-danger btn-per'
                     .col-sm-6
                       .text-right
-                        = link_to 'Editar', edit_note_path(note[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn btn-outline-primary'
+                        = link_to t('views.btn_edit'), edit_note_path(note[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn btn-outline-primary'

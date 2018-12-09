@@ -3,6 +3,7 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:edit, :update, :destroy]
   before_action :all_notes
+  before_action :set_locale
 
   def index
     @note = Note.new
@@ -57,5 +58,20 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:title, :content, :color)
+  end
+
+  def set_locale
+    if params[:locale]
+      if I18n.available_locales.map(&:to_s).include?(params[:locale])
+        I18n.locale = params[:locale]
+      else
+        flash.now[:notice] = "#{params[:locale]} translation not available"
+        logger.error flash.now[:notice]
+      end
+    end
+  end
+
+  def default_url_options(options = {})
+    {locale: I18n.locale}
   end
 end
