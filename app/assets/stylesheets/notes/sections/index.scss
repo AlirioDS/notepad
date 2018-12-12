@@ -76,6 +76,9 @@
 
 .card-body {
   padding: 1.25rem;
+  .card-text {
+    white-space: pre-wrap;
+  }
 }
 
 .date {
