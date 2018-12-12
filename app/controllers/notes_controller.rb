@@ -17,6 +17,7 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(note_params)
+    
     respond_to do |format|
       if @note.save
         format.html { redirect_to notes_path, notice: 'Note was successfully created.' }
