@@ -36,17 +36,19 @@
                 .card.border-secondary.mb3{style: "background-color: #{fav.color};"}
                   .card-header
                     .row
-                      .col-sm-7
+                      .col-sm-8
                         = fav.title
-                      .col-sm-2
+                      .col-sm-1
                         .text-right
                           = link_to(fav, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}"}, class: 'btn_delete') do
                             .far.fa-trash-alt
-                      .col-sm-2
+                      .col-sm-1
                         .text-right
                           = link_to(edit_note_path(fav[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn_edit') do
                             .fas.fa-edit
-                      .col-sm-2
+                      .col-sm-1
+                        .text-right
+                          .fas.fa-star
                   .card-body.text-secondary
                     %p.card-text
                       = fav.content
