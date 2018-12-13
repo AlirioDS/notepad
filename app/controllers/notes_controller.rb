@@ -7,6 +7,7 @@ class NotesController < ApplicationController
 
   def index
     @note = Note.new
+    @fav = @notes.where(fav: 'true')
     if params[:search].present?
       @notes = Note.search(params[:search])
     end
@@ -55,7 +56,7 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title, :content, :color)
+    params.require(:note).permit(:title, :content, :color, :fav)
   end
 
   def set_locale
