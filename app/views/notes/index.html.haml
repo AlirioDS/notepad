@@ -32,21 +32,21 @@
         .col-sm-12.col-md-12
           .row 
             - @fav.each do |fav|
-              .col-sm-4.col-md-4.mb-3
+              .col-sm-6.col-md-4.mb-3
                 .card.border-secondary.mb3{style: "background-color: #{fav.color};"}
                   .card-header
                     .row
-                      .col-sm-8
+                      .col-sm-6
                         = fav.title
-                      .col-sm-1
+                      .col-sm-2
                         .text-right
                           = link_to(fav, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}"}, class: 'btn_delete') do
                             .far.fa-trash-alt
-                      .col-sm-1
+                      .col-sm-2
                         .text-right
                           = link_to(edit_note_path(fav[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn_edit') do
                             .fas.fa-edit
-                      .col-sm-1
+                      .col-sm-2
                         .text-right
                           .fas.fa-star
                   .card-body.text-secondary
@@ -66,21 +66,21 @@
         .row 
           - @notes.each do |note|
             - if note.fav == nil
-              .col-sm-4.col-md-4.mb-3
+              .col-sm-6.col-md-4.mb-3
                 .card.border-secondary.mb3{style: "background-color: #{note.color};"}
                   .card-header
                     .row
-                      .col-sm-8
+                      .col-sm-6
                         = note.title
-                      .col-sm-1
+                      .col-sm-2
                         .text-right
                           = link_to(note, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}"}, class: 'btn_delete') do
                             .far.fa-trash-alt
-                      .col-sm-1
+                      .col-sm-2
                         .text-right
                           = link_to(edit_note_path(note[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn_edit') do
                             .fas.fa-edit
-                      .col-sm-1
+                      .col-sm-2
                         .text-right
                           .fas.fa-star{style: "font-weight: 100;"}
                   .card-body.text-secondary
