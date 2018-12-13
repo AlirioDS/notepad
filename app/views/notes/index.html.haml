@@ -65,7 +65,7 @@
       .col-sm-12.col-md-12
         .row 
           - @notes.each do |note|
-            - if note.fav == nil
+            - if note.fav == false || note.fav == nil
               .col-sm-6.col-md-4.mb-3
                 .card.border-secondary.mb3{style: "background-color: #{note.color};"}
                   .card-header
