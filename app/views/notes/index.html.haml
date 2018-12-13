@@ -70,17 +70,19 @@
                 .card.border-secondary.mb3{style: "background-color: #{note.color};"}
                   .card-header
                     .row
-                      .col-sm-7
+                      .col-sm-8
                         = note.title
-                      .col-sm-2
+                      .col-sm-1
                         .text-right
                           = link_to(note, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}"}, class: 'btn_delete') do
                             .far.fa-trash-alt
-                      .col-sm-2
+                      .col-sm-1
                         .text-right
                           = link_to(edit_note_path(note[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn_edit') do
                             .fas.fa-edit
-                      .col-sm-2
+                      .col-sm-1
+                        .text-right
+                          .fas.fa-star{style: "font-weight: 100;"}
                   .card-body.text-secondary
                     %p.card-text
                       = note.content
