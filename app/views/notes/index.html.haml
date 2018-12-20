@@ -23,7 +23,43 @@
               = link_to_unless_current t('views.english'), locale: "en"
             .dropdown-item
               = link_to_unless_current t('views.spanish'), locale: "es"
-
+  - if @search.present?
+    .container.padding
+      %h4
+      .row
+        .col-sm-12.col-md-12
+          .row 
+            - @search.each do |search|
+              .col-sm-6.col-md-4.mb-3
+                .card.border-secondary.mb3{style: "background-color: #{search.color};"}
+                  .card-header
+                    .row
+                      .col-sm-6
+                        = search.title
+                      .col-sm-2
+                        .text-right
+                          = link_to(search, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}"}, class: 'btn_delete') do
+                            .far.fa-trash-alt
+                      .col-sm-2
+                        .text-right
+                          = link_to(edit_note_path(search[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn_edit') do
+                            .fas.fa-edit
+                      .col-sm-2
+                        .text-right
+                          - if search.fav == false || search.fav == nil
+                            = link_to( note_path( search, "note[fav]" => true ), action: 'fav', remote: true, method: :put, class: 'btn_fav' ) do
+                              .fas.fa-star{style: "font-weight: 100;"}
+                          - else
+                            = link_to( note_path( search, "note[fav]" => false ), action: 'fav', remote: true, method: :put, class: 'btn_fav' ) do
+                              .fas.fa-star
+                  .card-body.text-secondary
+                    %p.card-text
+                      = search.content.truncate( 38 )
+                  .row
+                    .col-sm-12
+                      .text-right.date
+                        = t('views.date')
+                        = search.updated_at.to_formatted_s(:short)
   - if @fav.present?
     .container.padding
       %h4
@@ -52,7 +88,7 @@
                             .fas.fa-star
                   .card-body.text-secondary
                     %p.card-text
-                      = fav.content.truncate_words(10)
+                      = fav.content.truncate( 38 )
                   .row
                     .col-sm-12
                       .text-right.date
@@ -87,7 +123,7 @@
                               .fas.fa-star{style: "font-weight: 100;"}
                     .card-body.text-secondary
                       %p.card-text
-                        = note.content.truncate_words(10)
+                        = note.content.truncate(40)
                     .row
                       .col-sm-12
                         .text-right.date

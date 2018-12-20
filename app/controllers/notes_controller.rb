@@ -9,7 +9,9 @@ class NotesController < ApplicationController
     @note = Note.new
     @fav = @notes.where(fav: 'true')
     if params[:search].present?
-      @notes = Note.search(params[:search])
+      @search = Note.search(params[:search])
+      @fav = nil
+      @notes = nil
     end
   end
 
