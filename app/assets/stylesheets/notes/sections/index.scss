@@ -14,6 +14,10 @@
   }
 }
 ///Modal
+.modal-content {
+  border: 5px solid $white;
+  border-radius: 0.4rem;
+}
 .green {
   background-color: $green !important;
 }
@@ -32,29 +36,8 @@ textarea.form-control{
 .form-control {
   padding: 1rem 1rem;
 }
-.check-box-cs {
-  font-size: 1.4rem;
-  color: $green;
-
-  input[type='checkbox'] {
-    display:none;
-  }
-
-  input[type='checkbox'] + label:before {
-    font-family: 'Font Awesome 5 Free';
-    display: inline-block;
-  }
-  /* unchecked */
-  input[type='checkbox'] + label:before { 
-    content: "\f005";
-    font-weight:100;
-    letter-spacing: 5px;
-  }
-  /* checked */
-  input[type='checkbox']:checked + label:before {
-    font-weight:900;
-    letter-spacing: 5px;
-  }
+.not-margin {
+  margin-bottom: unset;
 }
 ///Search
 .search {
@@ -107,6 +90,13 @@ textarea.form-control{
 .btn_edit {
   color: $killer-whale !important;
   .far.fa-trash-alt {
+    font-size: 1.2rem;
+  } 
+}
+
+.btn_fav{
+  color: $killer-whale !important;
+  .fas.fa-star {
     font-size: 1.2rem;
   } 
 }

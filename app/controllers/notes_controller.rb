@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class NotesController < ApplicationController
-  before_action :set_note, only: %i[edit update destroy]
+  before_action :set_note, only: %i[edit update destroy fav]
   before_action :all_notes
   before_action :set_locale
 
@@ -14,6 +14,11 @@ class NotesController < ApplicationController
   end
 
   def edit; end
+
+  def fav
+    @note.update_attribute(:fav, true)
+    redirect_to notes_path, notice: 'Adding to Favorites'
+  end
 
   def create
     @note = Note.new(note_params)

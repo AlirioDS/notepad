@@ -48,10 +48,11 @@
                             .fas.fa-edit
                       .col-sm-2
                         .text-right
-                          .fas.fa-star
+                          = link_to( note_path( fav, "note[fav]" => false ), action: 'fav', remote: true, method: :put, class: 'btn_fav' ) do
+                            .fas.fa-star
                   .card-body.text-secondary
                     %p.card-text
-                      = fav.content
+                      = fav.content.truncate_words(10)
                   .row
                     .col-sm-12
                       .text-right.date
@@ -82,10 +83,11 @@
                               .fas.fa-edit
                         .col-sm-2
                           .text-right
-                            .fas.fa-star{style: "font-weight: 100;"}
+                            = link_to( note_path( note, "note[fav]" => true ), action: 'fav', remote: true, method: :put, class: 'btn_fav'  ) do
+                              .fas.fa-star{style: "font-weight: 100;"}
                     .card-body.text-secondary
                       %p.card-text
-                        = note.content
+                        = note.content.truncate_words(10)
                     .row
                       .col-sm-12
                         .text-right.date

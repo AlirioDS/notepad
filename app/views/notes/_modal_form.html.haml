@@ -10,15 +10,11 @@
         = f.input :title, label: false, input_html: { class: 'form-control', placeholder: "#{t("views.modal.form.title")}", maxlength: 30, required: "required" }
       .form-group
         = f.input :content, as: :text, label: false, input_html: { class: 'form-control', placeholder: "#{t("views.modal.form.content")}", required: "required" }
-      .form-group
+      .form-group.not-margin
         .row
-          .col-sm-6
-            .text-left.check-box-cs
-              = f.input:fav, label: "#{t("views.modal.form.favorites")}", as: :boolean
-          .col-sm-6
+          .col-sm-12
             .text-right
-              = f.input :color, as: :minicolors, label: false, input_html: {  class: 'form-control color-picker', placeholder: "#{t("views.modal.form.color")}" }
-
+              = f.input :color, as: :minicolors, label: false, input_html: {  class: 'form-control color-picker', placeholder: "#{t("views.modal.form.color")}", style: "width: 85px;" }
     .modal-footer
       = f.button :submit, "#{@note.new_record? ? "#{t("views.btn_create")}" : "#{t("views.btn_edit")}"}", class: "btn btn-outline-#{@note.new_record? ? "success" : "primary"}"
 
