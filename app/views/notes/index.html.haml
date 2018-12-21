@@ -23,31 +23,109 @@
               = link_to_unless_current t('views.english'), locale: "en"
             .dropdown-item
               = link_to_unless_current t('views.spanish'), locale: "es"
-
-  .container.padding
-    .row
-      .col-sm-12.col-md-12
-        .row 
-          - @notes.each do |note|
-            .col-sm-4.col-md-4.mb-3
-              .card.border-secondary.mb3{style: "background-color: #{note.color};"}
-                .card-header
+  - if @search.present?
+    .container.padding
+      %h4
+      .row
+        .col-sm-12.col-md-12
+          .row 
+            - @search.each do |search|
+              .col-sm-6.col-md-4.mb-3
+                .card.border-secondary.mb3{style: "background-color: #{search.color};"}
+                  .card-header
+                    .row
+                      .col-sm-6
+                        = search.title
+                      .col-sm-2
+                        .text-right
+                          = link_to(search, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}"}, class: 'btn_delete') do
+                            .far.fa-trash-alt
+                      .col-sm-2
+                        .text-right
+                          = link_to(edit_note_path(search[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn_edit') do
+                            .fas.fa-edit
+                      .col-sm-2
+                        .text-right
+                          - if search.fav == false || search.fav == nil
+                            = link_to( note_path( search, "note[fav]" => true ), action: 'fav', remote: true, method: :put, class: 'btn_fav' ) do
+                              .fas.fa-star{style: "font-weight: 100;"}
+                          - else
+                            = link_to( note_path( search, "note[fav]" => false ), action: 'fav', remote: true, method: :put, class: 'btn_fav' ) do
+                              .fas.fa-star
+                  .card-body.text-secondary
+                    %p.card-text
+                      = search.content.truncate_words( 12, separator: /\n/ )
                   .row
-                    .col-sm-8
-                      = note.title
-                    .col-sm-2
-                      .text-right
-                        = link_to(note, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}"}, class: 'btn_delete') do
-                          .far.fa-trash-alt
-                    .col-sm-2
-                      .text-right
-                        = link_to(edit_note_path(note[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn_edit') do
-                          .fas.fa-edit
-                .card-body.text-secondary
-                  %p.card-text
-                    = note.content
-                .row
-                  .col-sm-12
-                    .text-right.date
-                      = t('views.date')
-                      = note.updated_at.to_formatted_s(:short)
+                    .col-sm-12
+                      .text-right.date
+                        = t('views.date')
+                        = search.updated_at.to_formatted_s(:short)
+  - if @fav.present?
+    .container.padding
+      %h4
+        = t("views.front.favorites")
+      .row
+        .col-sm-12.col-md-12
+          .row 
+            - @fav.each do |fav|
+              .col-sm-6.col-md-4.mb-3
+                .card.border-secondary.mb3{style: "background-color: #{fav.color};"}
+                  .card-header
+                    .row
+                      .col-sm-6
+                        = fav.title
+                      .col-sm-2
+                        .text-right
+                          = link_to(fav, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}"}, class: 'btn_delete') do
+                            .far.fa-trash-alt
+                      .col-sm-2
+                        .text-right
+                          = link_to(edit_note_path(fav[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn_edit') do
+                            .fas.fa-edit
+                      .col-sm-2
+                        .text-right
+                          = link_to( note_path( fav, "note[fav]" => false ), action: 'fav', remote: true, method: :put, class: 'btn_fav' ) do
+                            .fas.fa-star
+                  .card-body.text-secondary
+                    %p.card-text
+                      = fav.content.truncate_words( 12, separator: /\n/ )
+                  .row
+                    .col-sm-12
+                      .text-right.date
+                        = t('views.date')
+                        = fav.updated_at.to_formatted_s(:short)
+  - if @notes.present?
+    .container.padding
+      %h4 
+        = t("views.front.others")
+      .row
+        .col-sm-12.col-md-12
+          .row 
+            - @notes.each do |note|
+              - if note.fav == false || note.fav == nil
+                .col-sm-6.col-md-4.mb-3
+                  .card.border-secondary.mb3{style: "background-color: #{note.color};"}
+                    .card-header
+                      .row
+                        .col-sm-6
+                          = note.title
+                        .col-sm-2
+                          .text-right
+                            = link_to(note, method: :delete, data: { confirm: "#{t('views.destroy.confirm')}"}, class: 'btn_delete') do
+                              .far.fa-trash-alt
+                        .col-sm-2
+                          .text-right
+                            = link_to(edit_note_path(note[:id]), remote: true, data: { target: '#uploadNote', toggle: 'modal' }, class: 'btn_edit') do
+                              .fas.fa-edit
+                        .col-sm-2
+                          .text-right
+                            = link_to( note_path( note, "note[fav]" => true ), action: 'fav', remote: true, method: :put, class: 'btn_fav'  ) do
+                              .fas.fa-star{style: "font-weight: 100;"}
+                    .card-body.text-secondary
+                      %p.card-text
+                        = note.content.html_safe.truncate_words( 12, separator: /\n/ )
+                    .row
+                      .col-sm-12
+                        .text-right.date
+                          = t('views.date')
+                          = note.updated_at.to_formatted_s(:short)

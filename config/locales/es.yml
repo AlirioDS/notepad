@@ -218,6 +218,9 @@ es:
       short: "%-d de %b %H:%M"
     pm: pm
   views:
+    front:
+      favorites: 'Preferidos'
+      others: 'Otros'
     btn_create: 'Crear Nota'
     btn_edit: 'Editar'
     btn_search: 'Buscar'
@@ -228,9 +231,10 @@ es:
       form:
         title: 'Titulo'
         content: 'Escriba aqui ...'
+        favorites: 'Favoritos'
         color: 'Color'
     english: 'Ingles'
     spanish: 'Español'
     destroy:
       confirm: 'Estas Seguro?'
-    date: 'Actualizado'
+    date: 'Modificado'

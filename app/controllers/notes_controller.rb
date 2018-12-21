@@ -1,18 +1,26 @@
 # frozen_string_literal: true
 
 class NotesController < ApplicationController
-  before_action :set_note, only: %i[edit update destroy]
+  before_action :set_note, only: %i[edit update destroy fav]
   before_action :all_notes
   before_action :set_locale
 
   def index
     @note = Note.new
+    @fav = @notes.where(fav: 'true')
     if params[:search].present?
-      @notes = Note.search(params[:search])
+      @search = Note.search(params[:search])
+      @fav = nil
+      @notes = nil
     end
   end
 
   def edit; end
+
+  def fav
+    @note.update_attribute(:fav, true)
+    redirect_to notes_path, notice: 'Adding to Favorites'
+  end
 
   def create
     @note = Note.new(note_params)
@@ -55,7 +63,7 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title, :content, :color)
+    params.require(:note).permit(:title, :content, :color, :fav)
   end
 
   def set_locale

@@ -2,7 +2,22 @@
 .header-padding {
   padding: 15px 0px;
 }
+.container.padding {
+  h4  {
+    color: #5f6368;
+    letter-spacing: .07272727em;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: .9rem;
+    font-weight: 500;
+    line-height: 1rem;
+    text-transform: uppercase;
+  }
+}
 ///Modal
+.modal-content {
+  border: 5px solid $white;
+  border-radius: 0.4rem;
+}
 .green {
   background-color: $green !important;
 }
@@ -21,7 +36,9 @@ textarea.form-control{
 .form-control {
   padding: 1rem 1rem;
 }
-
+.not-margin {
+  margin-bottom: unset;
+}
 ///Search
 .search {
   .form-control {
@@ -73,6 +90,13 @@ textarea.form-control{
 .btn_edit {
   color: $killer-whale !important;
   .far.fa-trash-alt {
+    font-size: 1.2rem;
+  } 
+}
+
+.btn_fav{
+  color: $killer-whale !important;
+  .fas.fa-star {
     font-size: 1.2rem;
   } 
 }

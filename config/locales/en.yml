@@ -214,6 +214,9 @@ en:
       short: "%d %b %H:%M"
     pm: pm
   views:
+    front:
+      favorites: 'favorites'
+      others: 'others'
     btn_create: 'Add Note'
     btn_edit: 'Edit'
     btn_search: 'Search'
@@ -224,9 +227,10 @@ en:
       form:
         title: 'Title'
         content: 'Writing Here ...'
+        favorites: 'Favorite Note'
         color: 'Add Color'
     english: 'English'
     spanish: 'Spanish'
     destroy:
       confirm: 'Are You Sure?'
-    date: 'Updated'
+    date: 'Edited'
